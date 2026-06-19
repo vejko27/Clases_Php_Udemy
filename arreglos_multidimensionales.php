@@ -14,7 +14,9 @@
      array('Diego',37)
      );
 
-  echo $amigos[0][1] . '<br/>';
+  echo $amigos[0] [0] . '<br/>';
+  echo $amigos[1] [0] . '<br/>' ;
+  echo $amigos[2] [0] . '<br/>' ;
   
 
 
