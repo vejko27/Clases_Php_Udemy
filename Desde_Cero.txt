@@ -1,0 +1,3 @@
+Curso basico de PHP.
+Login y registro de usuarios y contraseñas.
+Se va  a crear un blog, con un panel de administración.
