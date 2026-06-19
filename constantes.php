@@ -31,7 +31,11 @@ $es_estudiante = true; // Variable de tipo booleano
 //COn las constantes se escriben de la forma siguiente:
 
 define('PI', 3.1416); // Definimos una constante llamada PI con el valor de 3.1416
-
+#define ('PI', 3.18); te genera un error al momento de poner la misma defición
+//con un número distinto xq ya estaba definida en un inicio.
+define('NOMBRE', 'Victor');
 echo PI; // Imprime el valor de la constante PI
+//Las constantes no llevan comillas
+echo NOMBRE;
 
 ?>
