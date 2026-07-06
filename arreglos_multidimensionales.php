@@ -9,12 +9,14 @@
     <?php
 //Ahora veremos arreglos multidimensionales de amigos uno dentro del otro
   $amigos = array(
+     array('Alejandro', 20),
      array('Miguel', 38),
      array('Cereza', 36),
      array('Diego',37)
      );
 
-  echo $amigos[0] [0] . '<br/>';
+  echo $amigos[0][0] . '<br/>';
+  echo $amigos[1] [1] . '<br/>';
   echo $amigos[1] [0] . '<br/>' ;
   echo $amigos[2] [0] . '<br/>' ;
   
