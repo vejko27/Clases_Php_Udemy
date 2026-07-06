@@ -16,17 +16,21 @@ $meses = array('Enero',
 'Noviembre',
 'Diciembre'
 );
-// La función count nos devuelve el número de valores que tenemos dentro de un arreglo
-//echo count($meses);
 
-//$ultimo_mes= count($meses) -1;
-//$meses[$ultimo_mes];
+$numeros = array('1','2','3','4','5','6','7','8','9','10','11','12');
+sort($numeros);
+//ejecutes este código
+//Ahora lo vamos a ordenar en una lista
+//Ahora lo vamos a ordenar de forma ascendente y descente
+//ahora queremos ordenar los meses de forma alfabeticamente
+//Para organizarlos vamos a usar el parámetro sort 
+//Para ordenar en orden alfabetico
+//sort($meses);
+//Ahora para hacerlo al revéz usamos rsort
+//rsort($meses);
 
-//echo ($ultimo_mes);
-
-
+//Ahora queremos ordenar los números como debe ser
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -38,23 +42,10 @@ $meses = array('Enero',
     <h1>Meses del año</h1>
     <ul>
     <?php 
-     
-      foreach($meses as $mes) {
-
-      //ejecutes este código
-      //Ahora lo vamos a ordenar en una lista
-      //Ahora lo vamos a ordenar de forma ascendente y descente
-        echo '<li>' . $mes . '</li>';
-        
-
-      }
-    
-    
-    
+     foreach($numeros as $numero) {
+        echo '<li>' . $numero . '</li>';
+     }
     ?>
     </ul>
-    
-
-
 </body>
 </html>
