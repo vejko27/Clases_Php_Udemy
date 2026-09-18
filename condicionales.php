@@ -2,6 +2,10 @@
 //En esta clase se verá conficionales if
 //nos permite tomar descisiones en nuestros programas
 
+// if (){
+// instrucciones
+//}
+
 //if(condicion){
     //Acá van las instrucciones de nuestra condición solo sí
     //se cumple, esta es la estructura básica de nuestras condiciones
@@ -25,16 +29,12 @@ mayor o igual que.
   
 
 */
+if(condicion){
 
-$edad = 18;
-$nombre = 'Carlos';
+//instrucciones
 
-if($edad >= 18 && $nombre ='Carlos'){
-    //instrucciones
-    echo '<h1> Bienvenido Carlos</h1>';
 }
-if($edad < 18 or $nombre != 'Carlos'){
 
-echo '<h1> Eres menor de edad y/o no te llamas Carlos</h1>';
-}
+
+
 ?>

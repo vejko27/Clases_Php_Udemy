@@ -1,28 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arreglos multidimensionales de PHP</title>
-</head>
-<body>
-    <?php
-//Ahora veremos arreglos multidimensionales de amigos uno dentro del otro
-  $amigos = array(
-     array('Alejandro', 20),
-     array('Miguel', 38),
-     array('Cereza', 36),
-     array('Diego',37)
-     );
+<?php
+//Arreglos multidimensionales
+//Nos permite guardar uno o más arreglos uno dentro del otro
+$amigos =array(
 
-  echo $amigos[0][0] . '<br/>';
-  echo $amigos[1] [1] . '<br/>';
-  echo $amigos[1] [0] . '<br/>' ;
-  echo $amigos[2] [0] . '<br/>' ;
-  
+ array('Alejandro', 20),
+ array('Cesar', 21),
+ array('Manuel', 18)
+
+ );
+
+echo 'El nombre y edad es:   ' . $amigos[0][0] .'<br />';
+echo 'El nombre y edad es:   ' . $amigos[1][0] .'<br />';
 
 
 ?>
-</body>
-</html>
 

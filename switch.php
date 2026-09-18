@@ -5,34 +5,28 @@
 //     //instrucciones
 //     break;
 // }
-$mes = 'Marzo';
+$mes = 'Febrero';
+
 switch($mes){
-    case 'Diciembre';
-    //Instrucciones
-    echo 'Feliz Navidad';
-    
-    break; // es importante ponerlo para poder cerrar el ciclo
+    //Instrucciones a indicar 1.
+    case'Diciembre';
+    echo "Feliz Navidad";
+    break;
+    //Instrucciones a indicar 2.
 
-    case 'Enero';
-    echo 'Feliz Año Nuevo';
-    //Instrucciones
+    case'Enero';
+    echo"Feliz año nuevo";
     break;
 
-    case 'Febrero';
-    echo 'Feliz Cumpleaños Victor Cánova';
-    //Instrucciones
+    case'Julio';
+    echo "Feliz día de la patria del Perú";
     break;
 
-    default: // el se va a ejecutar en caso que los anteriores no cumplan
-    echo 'En este mes no se celebra nada';
-}
+    default: 
+    echo"En este mes no se celebra nada";
 
-if($mes == 'Diciembre'){
-    echo 'Feliz Navidad';
-}else if($mes == 'Enero'){
- echo'Feliz Año Nuevo';
-}else{
-    echo 'En este mes no se celebra nada';
+    if(mes == 'Diciembre'){
+        #code...
+    }
 }
- 
 ?>
