@@ -17,44 +17,14 @@ $meses = array('Enero',
 'Diciembre'
 );
 // La función count nos devuelve el número de valores que tenemos dentro de un arreglo
-//echo count($meses);
+// echo 'Quiero que me cuentes cuantos meses tenemos en el año:   ' . count($meses) .'<br />' .'<br />';
 
-//$ultimo_mes= count($meses) -1;
-//$meses[$ultimo_mes];
+$ultimo_mes = count($meses) -1;
+echo 'El último mes que es Diciembre, cuenta con el número en nuestro array como número:  '.$ultimo_mes;
 
-//echo ($ultimo_mes);
+
+
 
 
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meses del año</title>
-</head>
-<body>
-    <h1>Meses del año</h1>
-    <ul>
-    <?php 
-     
-      foreach($meses as $mes) {
-
-      //ejecutes este código
-      //Ahora lo vamos a ordenar en una lista
-      //Ahora lo vamos a ordenar de forma ascendente y descente
-        echo '<li>' . $mes . '</li>';
-        
-
-      }
-    
-    
-    
-    ?>
-    </ul>
-    
-
-
-</body>
-</html>

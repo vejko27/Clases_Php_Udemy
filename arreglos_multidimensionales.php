@@ -9,8 +9,9 @@ $amigos =array(
 
  );
 
-echo 'El nombre y edad es:   ' . $amigos[0][0] .'<br />';
-echo 'El nombre y edad es:   ' . $amigos[1][0] .'<br />';
+echo 'El nombre y edad es:   ' . $amigos[0][0] .'<br />' .'<br />';
+echo 'El nombre y edad es:   ' . $amigos[1][0] .'<br />' .'<br />';
+echo 'El nombre y edad es:   ' . $amigos[2][0] .'<br />' .'<br />';
 
 
 ?>
