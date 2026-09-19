@@ -7,13 +7,13 @@
     - Resta
     * multiplicación
     / División
-    % es la diferencia que tenemos en una divisición
+    % es la diferencia que tenemos en una división
 */
 //$numero = 10;
 //$numero2= 6;
 //$resultado = $numero % $numero2;
+//echo $resultado;
 
-// echo $resultado;
 /////////////////////////////////////////////////////
 
 // Operadores de Asignación:
@@ -25,12 +25,12 @@
 /=
 */
 
-//$numero =10;
-//$numero2 =5;
+// $numero =10;
+// $numero2 =5;
 
-//$numero = $numero + 7;
-//$numero += 7;
-//echo $numero;
+// //$numero = $numero + 7;
+// $numero += 7;
+// echo $numero;
 
 ///////////////////////////////////////////////////////
 
@@ -45,13 +45,13 @@
 >=
 cuando tengas una variable en '' se vuelve en dato STRING
 */
-// $numero = '10'; // String 
+// $numero = '10'; // Cuadno usamos comillas simples se vuelve tipo String 
 // $numero2 = 5;
-// $variable ='true';
-// if($variable == true){
+//  $variable ='true';
+//   if($variable == true){
 //     echo 'Es idéntico';
-// } else{
-//     echo 'Es diferente el dato';
+//  } else{
+//    echo 'Es diferente el dato';
 // }
 
 
@@ -67,7 +67,7 @@ xor
 // $numero = 10;
 // if($numero <= 10 && $numero < 20 ){
 //     echo 'Ejecuta';
-// }
+//  }
 
 /*
 Operadores de incremento / Decremento
@@ -78,24 +78,28 @@ $x++
 --$x
  // $x--
 
-*/
+*/ //Es el incremento en 1 tal cual como tenemos sobreado
+// $numero =10;
+// $numero2=20;
+// // $numero = $numero +1;
+// //Es el incremento en 1 tal cual como tenemos sobreado
+// //Sobre todo ayuda en ciclos
+//  $numero++;
+//  echo $numero;
 
-$numero = 10;
-//$numero = $numero + 1;
-//$numero += 1;
-//Asi podemos incrementar nuestro número en 1 unidad
-//$numero++;
-//Cual es la diferencia que lo va aumentar antes de cualquier operación
-// $numero--;
-// echo '<br />';
-// echo $numero;
-// el símbolo de . punto sirve para concatenar objetos
-$texto='Cadena de texto';
-$texto .=' Segunda Cadena de texto';
+//  echo '<br />';
+//  echo '<br />';
 
-//$texto3 = $texto . $texto2;
-//echo $texto3;
+// --$numero2;
+// echo $numero2;
 
-echo $texto;
+//Ahora si queremos concatenar debemos textos para ello usamos punto .
+//Lo haremos de la siguiente manera
+
+$texto ='Cadena de texto 1';
+$texto2=' Cadena de texto 2';
+
+$resultado = $texto . '<br/>' .$texto2;
+echo $resultado;
 
 ?>

@@ -3,30 +3,24 @@
 // switch( acá siempre va la  variable no MAS){
 //     case'';
 //     //instrucciones
-//     break;
+//     break; es impórtante  para darle fin al swicht
+
+// Default se pone en caso que los demás casos no haya sido exitoso
 // }
-$mes = 'Febrero';
+$mes = 'Marzo';
 
 switch($mes){
-    //Instrucciones a indicar 1.
-    case'Diciembre';
-    echo "Feliz Navidad";
-    break;
-    //Instrucciones a indicar 2.
+    case'Diciembre':
+        //Intrucciones
+        echo"Feliz Navidad";
+        break;
 
-    case'Enero';
-    echo"Feliz año nuevo";
-    break;
+    case'Febrero':
+        echo" Feliz cumpleaños Omar ";
+        break;
 
-    case'Julio';
-    echo "Feliz día de la patria del Perú";
-    break;
-
-    default: 
-    echo"En este mes no se celebra nada";
-
-    if(mes == 'Diciembre'){
-        #code...
-    }
+        default:
+        echo"No se encontró el mes solicitado";
 }
+
 ?>
