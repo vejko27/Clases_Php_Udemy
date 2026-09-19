@@ -14,5 +14,17 @@ $meses = array('Enero',
 'Noviembre',
 'Diciembre',
  );
+//Esto si lo hacemos con FOR
+//  for($i = 0; $i < count($meses); $i++ ){
+//  echo $meses[$i] . '<br/>'. '<br/>';
+//  }
 
+//Pero ahora lo vamos a usar con while
+$contador = 0;
+while($contador < count($meses)){
+    echo $meses[$contador] . '<br/>'. '<br/>';
+    $contador++;
+    
+
+}
 ?>
