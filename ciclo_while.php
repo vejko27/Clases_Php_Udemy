@@ -6,15 +6,17 @@
 //Y luego
 
 // while(){
-//     //Instrucciones
+   //Instrucciones
 // }
+$x= 20;
 
-$x = 20;
+while($x >=1 ){
+    //Instrucciones si es verdadera
 
-while($x >= 1){
-    echo $x .' <br/>';
-
+    echo  $x . '<br/>';
     $x--;
+
 }
+
 
 ?>
