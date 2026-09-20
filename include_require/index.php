@@ -3,10 +3,11 @@
 */
 //vamos a realizar una función que va hacer una suma
 
-function suma($n1 , $n2){
-    return $n1 + $n2;
+function suma ($numero, $numero2){
+    return $numero + $numero2;
 }
 
-include vista.php;
+include 'vista.php';
+
 
 ?>
