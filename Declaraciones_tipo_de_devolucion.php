@@ -1,0 +1,6 @@
+<?php
+//Declaraciones tipo devolución
+
+
+
+?>
