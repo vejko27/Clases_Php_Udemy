@@ -1,6 +1,0 @@
-<?php
-//Declaraciones tipo devolución
-
-
-
-?>
