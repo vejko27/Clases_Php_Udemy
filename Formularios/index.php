@@ -9,7 +9,7 @@
 <!--Vamos a usar name para utiliar el parámetro name para llamar a PHP
 
 -->    
-<form action="recibe.php" method="">
+<form action="recibe.php" method="post">
 <div>
     <input type = "text" placeholder="Nombre: " name="nombre">
 </div>
@@ -18,22 +18,23 @@
 <!--Para asociar nuestro label debe tener el misno nombre que el id de nuestro input.
 -->
     <label for="hombre">Hombre</label>
-    <input type="radio" name="Sexo" value="hombre" id="hombre">
+    <input type="radio" name="sexo" value="hombre" id="hombre">
 
     <label for="mujer">Mujer</label>
-    <input type="radio" name="Sexo" value="mujer" id="mujer">
+    <input type="radio" name="sexo" value="mujer" id="mujer">
 
 <!--Ahora podemos usar los combo_box y usalomos la etiqueta select.
 --> 
     <select name="year" id="year">
-      <option value="2000">2000</option>
-      <option value="2001">2001</option>
-      <option value="2002">2002</option>
-    </select>  
+      <?php 
+        for($y = 1900; $y <= 2026; $y++){
+        echo "<option value= '$y'>$y</option>";
+      }
+      ?>
+    </select>
 
 </div>
 
-     
 <!--Ahora vamos a usar check_box.
 -->
  <div>
