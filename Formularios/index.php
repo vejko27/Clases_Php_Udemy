@@ -1,3 +1,10 @@
+<?php
+  if($_POST){
+    echo $_POST['nombre'];
+ }
+  
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,7 +16,7 @@
 <!--Vamos a usar name para utiliar el parámetro name para llamar a PHP
 
 -->    
-<form action="recibe.php" method="post">
+<form action="index.php" method="post">
 <div>
     <input type = "text" placeholder="Nombre: " name="nombre">
 </div>
