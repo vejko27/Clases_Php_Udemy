@@ -1,4 +1,5 @@
 <?php
+//Ejercicios 1–20: Fundamentos de PHP, variables y arreglos
 // //Ejecicio 1:
 // echo 'Hola Mundo'
 
@@ -126,15 +127,54 @@
 
 //Ejercicio 16.	Crea un arreglo y agrega un elemento nuevo.
 
-$caballeros = array ('aries','tauro','géminis','cancer','leo');
-//Agregar un elemento
-$caballeros[]="Virgo";
+// $caballeros = array ('aries','tauro','géminis','cancer','leo');
+// //Agregar un elemento
+// $caballeros[]="Virgo";
 
-echo 'El sexto caballero del zodiaco es: ' . '<br/>';
+// echo 'El sexto caballero del zodiaco es: ' . '<br/>';
 
-foreach($caballeros as $caballero){
-    echo $caballero .'<br/>'. '<br/>';
-}
+// foreach($caballeros as $caballero){
+//     echo $caballero .'<br/>'. '<br/>';
+// }
+
+//Ejercicio 17.	Elimina un elemento de un arreglo.
+
+// $signos_zodiacales = array ('aries','tauro','géminis','cancer','leo');
+
+// unset($signos_zodiacales[2]);//Elimina a géminis
+
+// foreach($signos_zodiacales as $singo_zodiacal){
+//     echo $singo_zodiacal .'<br/>';
+// }
+
+//Ejercicio 18: Usa COUNT para contar elementos de un arreglo.
+
+// $semana= array('Lunes',
+// 'Martes',
+// 'Miercoles',
+// 'Jueves',
+// 'Viernes',
+// 'Sábado',
+// 'Domingo');
+
+// $cantidad_dia_de_semana = count($semana);
+
+// echo ' En la semana hay : ' . $cantidad_dia_de_semana;
+
+//Ejercicio 19: Crea una variable $x = 10 y réstale 3
+
+// $x= 10;
+
+// $resta = $x -3;
+
+// echo 'El resultado es: '.  $resta;
+
+//Ejercicio 20.	Crea una variable $x = 10 y multiplícala por 5.
+
+// $x= 10;
+// $x = $x * 5;
+
+// echo 'El resultado es: '.  $x;
 
 
 
