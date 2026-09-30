@@ -21,41 +21,47 @@
 
 //Ejerciocio 23.	Crea un switch que evalúe un día de la semana.
 
-$dia = 'Martes';
+// $dia = 'Martes';
 
-switch($dia){
-    case "Lunes":
-        echo 'Inicio de la semana';
-        break;
+// switch($dia){
+//     case "Lunes":
+//         echo 'Inicio de la semana';
+//         break;
 
-        case "Martes":
-        echo 'Segundo día de la semana';
-        break;
+//         case "Martes":
+//         echo 'Segundo día de la semana';
+//         break;
 
-        case "Miercoles":
-        echo 'Tercer día de la semana';
-        break;
+//         case "Miercoles":
+//         echo 'Tercer día de la semana';
+//         break;
 
-        case "Jueves":
-        echo 'Cuarto día de la semana';
-        break;
+//         case "Jueves":
+//         echo 'Cuarto día de la semana';
+//         break;
 
-        case "Viernes":
-        echo 'Quinto día de la semana';
-        break;
+//         case "Viernes":
+//         echo 'Quinto día de la semana';
+//         break;
 
-        case "Sábado":
-        echo 'Inicio de fin de semana';
-        break;
+//         case "Sábado":
+//         echo 'Inicio de fin de semana';
+//         break;
 
-        case "Domingo":
-        echo 'Ultimo día de la semana';
-        break;
+//         case "Domingo":
+//         echo 'Ultimo día de la semana';
+//         break;
 
-        default: 
+//         default: 
 
-        echo 'Día no válido';
+//         echo 'Día no válido';
+// }
+
+//Ejerciocio 24.	Usa un for para imprimir los números del 1 al 10.
+
+for ($i = 0 ; $i <=10; $i ++){
+
+echo $i . '<br/>';
 }
-
      
 ?>
