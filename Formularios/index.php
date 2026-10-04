@@ -1,8 +1,8 @@
 <?php
-  if($_POST){
-    echo $_POST['nombre'];
- }
-  
+if($_POST){
+  echo $_POST['nombre'];
+}
+    
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
 <!--Vamos a usar name para utiliar el parámetro name para llamar a PHP
 
 -->    
-<form action="index.php" method="post">
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
 <div>
     <input type = "text" placeholder="Nombre: " name="nombre">
 </div>

@@ -24,7 +24,7 @@ El método GET solo lo vamos a usar cuando queremos usar información y mostrarl
 
 // print_r($_GET);
 if(!$_GET){
-    header('Location: http://localhost/Clases_Php_Udemy/Formularios/index.php');
+    header('Location: http://localhost/Clases_Php_Udemy/Formularios/');
 }
 //Nos falta validar en caso que no llene datos y lo hacemos de la sgte manera.
 $nombre   = $_GET['nombre'];
@@ -37,7 +37,7 @@ if($nombre){
 }else{
     echo "El usuario no estableció nombre <br>";
 }
-
+echo $nombre . '<br/>';
 echo $sexo   . '<br/>';
 echo $year   . '<br/>';
 echo $terminos . '<br/>';
