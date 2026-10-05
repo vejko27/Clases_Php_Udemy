@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<div class="wrap"></div>
+<div class="wrap">
   <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
     <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="">
 
@@ -18,11 +18,18 @@
 
     <textarea name="mensaje" class="form-control" id="mensaje" placeholder="Mensaje"></textarea>
 
-    <input type="submit" name="submit" class="btn btn-primary" value="Enviar Correo">
+     <div class="alert error">
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet dolorum esse et culpa hic eius similique dolores saepe praesentium sunt vero accusamus doloribus, ullam adipisci est iste recusandae. Necessitatibus, inventore?</p>
+     </div>
 
+     <div class="alert success">
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet dolorum esse et culpa hic eius similique dolores saepe praesentium sunt vero accusamus doloribus, ullam adipisci est iste recusandae. Necessitatibus, inventore?</p>
+     </div>
 
-  </form>
-  
     
+
+    <input type="submit" name="submit" class="btn btn-primary" value="Enviar Correo">
+  </form>
+</div>
 </body>
 </html>
