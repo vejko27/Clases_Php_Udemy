@@ -11,25 +11,23 @@
 <body>
 
 <div class="wrap">
-  <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
-    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="">
+  <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8');?>" method="post" novalidate>
+    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="<?php if(!$enviado && isset($nombre)) echo $nombre  ?>">
 
-    <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo" value="">
+    <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo" value="<?php if(!$enviado && isset($correo)) echo $correo ?>">
 
     <textarea name="mensaje" class="form-control" id="mensaje" placeholder="Mensaje"></textarea>
     <?php if(!empty($errores)) : ?>
     <div class="alert error">
-        <?php foreach($errores as $error) {
-            echo $error;
-        } ?>
+        <?php foreach($errores as $error) : ?>
+            <p><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></p>
+        <?php endforeach; ?>
     </div>
     <?php elseif(isset($enviado) && $enviado): ?>
     <div class="alert success">
         <p>Enviado Correctamente</p>
     </div>
     <?php endif ?>
-
-            
 
     <input type="submit" name="submit" class="btn btn-primary" value="Enviar Correo">
   </form>
