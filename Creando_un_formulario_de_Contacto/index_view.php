@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
     <link rel="icon" href="../Iconos/PHP.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Practica de formulario de contacto</title>
@@ -17,16 +17,19 @@
     <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo" value="">
 
     <textarea name="mensaje" class="form-control" id="mensaje" placeholder="Mensaje"></textarea>
+    <?php if(!empty($errores)) : ?>
+    <div class="alert error">
+        <?php foreach($errores as $error) {
+            echo $error;
+        } ?>
+    </div>
+    <?php elseif(isset($enviado) && $enviado): ?>
+    <div class="alert success">
+        <p>Enviado Correctamente</p>
+    </div>
+    <?php endif ?>
 
-     <div class="alert error">
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet dolorum esse et culpa hic eius similique dolores saepe praesentium sunt vero accusamus doloribus, ullam adipisci est iste recusandae. Necessitatibus, inventore?</p>
-     </div>
-
-     <div class="alert success">
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet dolorum esse et culpa hic eius similique dolores saepe praesentium sunt vero accusamus doloribus, ullam adipisci est iste recusandae. Necessitatibus, inventore?</p>
-     </div>
-
-    
+            
 
     <input type="submit" name="submit" class="btn btn-primary" value="Enviar Correo">
   </form>
