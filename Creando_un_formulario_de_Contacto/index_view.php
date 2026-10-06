@@ -12,11 +12,11 @@
 
 <div class="wrap">
   <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8');?>" method="post" novalidate>
-    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="<?php if(!$enviado && isset($nombre)) echo $nombre  ?>">
+    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="<?php if(!$enviado && isset($nombre)) echo htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8'); ?>">
 
-    <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo" value="<?php if(!$enviado && isset($correo)) echo $correo ?>">
+    <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo" value="<?php if(!$enviado && isset($correo)) echo htmlspecialchars($correo, ENT_QUOTES, 'UTF-8'); ?>">
 
-    <textarea name="mensaje" class="form-control" id="mensaje" placeholder="Mensaje"></textarea>
+    <textarea name="mensaje" class="form-control" id="mensaje" placeholder="Mensaje"><?php if(!$enviado && isset($mensaje)) echo htmlspecialchars($mensaje, ENT_QUOTES, 'UTF-8'); ?></textarea>
     <?php if(!empty($errores)) : ?>
     <div class="alert error">
         <?php foreach($errores as $error) : ?>
