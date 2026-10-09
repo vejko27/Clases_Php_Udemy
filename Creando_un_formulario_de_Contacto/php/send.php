@@ -50,7 +50,7 @@ function enviarCorreoContacto($nombre, $correo, $mensaje)
     $correoHtml = htmlspecialchars($correo, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
     $mensajeHtml = nl2br(htmlspecialchars($mensaje, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'));
 
-    $logoPath = __DIR__ . '/Iconos/SBC_TRANSPORT.png';
+    $logoPath = __DIR__ . '/../Iconos/SBC_TRANSPORT.png';
     if (!is_readable($logoPath)) {
         throw new RuntimeException('No se encontró el logotipo para adjuntarlo al correo.');
     }
