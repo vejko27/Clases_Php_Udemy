@@ -1,7 +1,8 @@
 <?php
 
-require_once __DIR__ . '/send.php';
+require_once __DIR__ . '/php/send.php';
 
+$urlVolver = 'https://smartt.com.pe';
 $errores = [];
 $enviado = '';
 
@@ -39,5 +40,5 @@ if (isset($_POST['submit'])) {
     }
 }
 
-require __DIR__ . '/index_view.php';
+require __DIR__ . '/php/contactenos_view.php';
 ?>
