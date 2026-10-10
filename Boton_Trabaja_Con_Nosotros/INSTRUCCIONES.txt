@@ -1,0 +1,102 @@
+INSTRUCCIONES DE INSTALACIÓN - FORMULARIO TRABAJA CON NOSOTROS
+================================================================
+
+PASO 1: CREAR LA BASE DE DATOS
+===============================
+1. Abre tu navegador y ve a: http://localhost/phpmyadmin
+2. Inicia sesión (usuario: root, sin contraseña)
+3. En el panel izquierdo, busca la opción "Nueva" o "Create"
+4. Crea una nueva base de datos llamada: trabaja_con_nosotros
+5. Después de crear la BD, selecciónala
+6. Ve a la pestaña "SQL" en la parte superior
+7. Copia todo el contenido del archivo "base_datos.sql"
+8. Pégalo en la ventana de SQL y haz clic en "Ejecutar"
+9. Verás que se crea la tabla "candidatos"
+
+ALTERNATIVA - Usando línea de comandos:
+1. Abre CMD o PowerShell
+2. Ve a tu carpeta XAMPP/mysql/bin
+3. Ejecuta: mysql -u root < ruta/del/archivo/base_datos.sql
+
+PASO 2: VERIFICAR LOS ARCHIVOS
+================================
+Los siguientes archivos deben estar en: C:\xampp\htdocs\Boton_Trabaja_Con_Nosotros\
+
+✓ index.html - El formulario
+✓ procesar.php - Script que procesa y guarda los datos
+✓ base_datos.sql - Estructura de la base de datos
+✓ cvs/ - Carpeta donde se guardarán los CVs (se crea automáticamente)
+
+PASO 3: INICIAR XAMPP
+======================
+1. Abre el Panel de Control de XAMPP
+2. Inicia el servicio MySQL
+3. Inicia el servicio Apache
+
+PASO 4: PROBAR EL FORMULARIO
+=============================
+1. Abre tu navegador y ve a: http://localhost/Boton_Trabaja_Con_Nosotros/
+2. Completa el formulario con tus datos
+3. Adjunta un archivo PDF, DOC o DOCX
+4. Haz clic en "Enviar Candidatura"
+5. Deberías ver un mensaje de éxito
+
+PASO 5: VERIFICAR LOS DATOS EN LA BD
+======================================
+1. Ve a http://localhost/phpmyadmin
+2. Selecciona la BD "trabaja_con_nosotros"
+3. Selecciona la tabla "candidatos"
+4. Verás todos los datos enviados a través del formulario
+
+PASO 6: DESCARGAR CVS
+=======================
+Los archivos CV se guardan en la carpeta: C:\xampp\htdocs\Boton_Trabaja_Con_Nosotros\cvs\
+Puedes descargarlos directamente desde esta carpeta
+
+CONSIDERACIONES IMPORTANTES
+============================
+1. Usuario MySQL: root
+2. Contraseña MySQL: (sin contraseña, deja en blanco)
+3. Host: localhost
+4. Base de datos: trabaja_con_nosotros
+
+Si necesitas cambiar estos datos, edita el archivo "procesar.php" en estas líneas:
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "trabaja_con_nosotros";
+
+SOLUCIÓN DE PROBLEMAS
+======================
+
+Problema: "Error de conexión a la base de datos"
+Solución: 
+- Verifica que MySQL esté corriendo en XAMPP
+- Asegúrate de que la BD "trabaja_con_nosotros" existe
+- Verifica los datos de conexión en procesar.php
+
+Problema: "Error al subir el archivo"
+Solución:
+- Verifica que la carpeta "cvs" tenga permisos de escritura
+- Comprueba que el archivo sea PDF, DOC o DOCX
+- Asegúrate de que el archivo no supere 5MB
+
+Problema: "Error 404 procesar.php no encontrado"
+Solución:
+- Verifica que el archivo procesar.php esté en la carpeta correcta
+- Recarga la página con Ctrl+F5 para limpiar caché
+
+CAMPOS DE LA BASE DE DATOS
+===========================
+- id: Identificador único de cada candidato
+- nombres: Nombres completos del candidato
+- apellidos: Apellidos completos del candidato
+- email: Correo electrónico (no se pueden repetir)
+- disposicion: Tipo de disposición para trabajar
+- cv_nombre: Nombre original del archivo CV
+- cv_ruta: Ruta donde se guardó el archivo
+- fecha_registro: Fecha y hora del registro
+- estado: Estado de la candidatura (nuevo, revisado, rechazado, seleccionado)
+- notas: Campo para agregar notas internas
+
+¡Tu formulario está listo para funcionar!
