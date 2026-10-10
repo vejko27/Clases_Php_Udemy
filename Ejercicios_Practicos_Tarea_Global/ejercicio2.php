@@ -123,13 +123,119 @@
 // echo $frutas[2];
 //Ejerciocio 30:Crea un if que verifique si un arreglo está vacío.
 
-$variable='';
+// $variable='';
 
-if(empty($variable)){
-    echo 'La variable está vacía';
-}else{
-    echo 'La variable contiene data';
+// if(empty($variable)){
+//     echo 'La variable está vacía';
+// }else{
+//     echo 'La variable contiene data';
+// }
+
+//Ejercicio 30: Crea un ciclo que sume los números de un arreglo.
+//Ejercicio 31: Crea un ciclo que cuente los números pares
+// $numeros =[1,2,3,4,5,6];
+
+// $suma = 0;
+// $sumaNumerosPares = 0;
+
+// foreach($numeros as $numero){
+ 
+//     // $suma += $numero;  
+//     //Ejercicio 31.
+//     if($numero % 2 == 0){
+//         echo 'El número ' . $numero . '  es par <br>';
+//         $sumaNumerosPares += $numero;
+//     } 
+// }
+
+// // echo 'La sumatoria de todos estos números es: ' . $suma;
+// echo 'La suma de números pares de este arreglo es: '
+// .$sumaNumerosPares;
+
+//Ejercicio 32: Crea un ciclo que imprima solo los números 
+//mayores a 50
+
+// $numeros=[10,20,50,80,60,15,23,35,200];
+// $encontrados = 0;
+
+// foreach($numeros as $numero){
+
+//          if($numero >= 50){
+//          echo 'Estos números son mayores a 50 de este arreglo:  ' . $numero. '<br/>';
+//          $encontrados++;
+//          }
+// }
+  // Ejercicio 33: Crea un switch que muestre un mensaje la nota (A,B,C)
+  //Funciona en el terminal de visual code.
+//   $nota = readline('Ingrese la nota (A,B o C): ');
+//   switch(strtoupper($nota)){
+
+//     case 'A':
+//     echo 'Excelente trabajo';
+//     break;
+
+//      case 'B':
+//      echo 'Buen trabajo';
+//      break;
+
+//       case 'C':
+//       echo 'Hay mucho por mejorar';
+//       break;
+
+//        default:
+//        echo 'Nota no Válida';
+//        break;
+//   }
+
+
+//Ejercicio 34: Crea un IF que verifique si un número es positivo
+//negativo o cero
+
+// $numero = -1;
+
+// if($numero > 0 ){
+//     echo 'El número es positivo';
+// }elseif($numero < 0){
+//     echo 'El número es negativo';
+// }else{
+//     echo 'El número es Cero';
+// }
+
+//Ejercicio 35: Crea un ciclo que imprima los 
+//elementos de un arreglo asociativo.
+
+// $datos_personales =['Nombre'=>'Victor Omar',
+//  'Apellido' => 'Canova Talledo', 
+//  'Número Móvil'=>'980683910'];
+
+//   foreach($datos_personales as $clave => $valor){
+//      echo $clave . '  :   ' . $valor . '<br/>'. '<br/>';
+//  }
+// //Ejercicio 36: Crea un ciclo que imprima los 
+// //índices y los valores de un arreglo asociativo.
+// echo '<br/>'.' Aplicaremos el ejercicio 36 con los datos del 35: ' .'<br/>'.'<br/>';
+
+// foreach ($datos_personales as $indice => $valor){
+
+//       echo ' Índice:   '. $indice . '<br/>';
+//       echo ' Valor:    ' . $valor .'<br><br>';
+      
+// }
+//Crea un for con la tabla de multiplicar de 7
+
+echo '<h3>Tabla del 7</h3>';
+
+for($i = 0 ;$i <=12; $i++ ){
+
+     echo '7 x ' .$i. ' = ' .(7*$i).' <br> ';
+
 }
+
+
+
 ?>
+
+
+
 
 
