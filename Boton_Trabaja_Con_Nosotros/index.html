@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabaja con Nosotros</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen py-12 px-4">
+    <div class="max-w-2xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">¡Únete a Nuestro Equipo!</h1>
+            <p class="text-gray-600 text-lg">Completa el formulario para enviarnos tu candidatura</p>
+        </div>
+
+        <!-- Mensaje de respuesta -->
+        <div id="mensaje" class="mb-6 hidden"></div>
+
+        <!-- Formulario -->
+        <form id="formularioCandidatura" class="bg-white rounded-lg shadow-lg p-8 space-y-6" enctype="multipart/form-data">
+            
+            <!-- Nombres Completos -->
+            <div>
+                <label for="nombres" class="block text-sm font-semibold text-gray-700 mb-2">
+                    Nombres Completos
+                </label>
+                <input 
+                    type="text" 
+                    id="nombres" 
+                    name="nombres" 
+                    placeholder="Ej: Juan Carlos"
+                    required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                />
+            </div>
+
+            <!-- Apellidos Completos -->
+            <div>
+                <label for="apellidos" class="block text-sm font-semibold text-gray-700 mb-2">
+                    Apellidos Completos
+                </label>
+                <input 
+                    type="text" 
+                    id="apellidos" 
+                    name="apellidos" 
+                    placeholder="Ej: Pérez García"
+                    required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                />
+            </div>
+
+            <!-- Correo Electrónico -->
+            <div>
+                <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
+                    Correo Electrónico
+                </label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="correo@ejemplo.com"
+                    required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                />
+            </div>
+
+            <!-- Disposición para Trabajar -->
+            <div>
+                <label for="disposicion" class="block text-sm font-semibold text-gray-700 mb-2">
+                    Disposición para Trabajar
+                </label>
+                <select 
+                    id="disposicion" 
+                    name="disposicion" 
+                    required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition bg-white"
+                >
+                    <option value="">-- Selecciona una opción --</option>
+                    <option value="tiempo-completo">Tiempo Completo</option>
+                    <option value="medio-tiempo">Medio Tiempo</option>
+                    <option value="freelance">Freelance</option>
+                    <option value="practicante">Practicante</option>
+                    <option value="remoto">Remoto</option>
+                    <option value="presencial">Presencial</option>
+                    <option value="hibrido">Híbrido</option>
+                </select>
+            </div>
+
+            <!-- Adjuntar CV -->
+            <div>
+                <label for="cv" class="block text-sm font-semibold text-gray-700 mb-2">
+                    Adjuntar CV
+                </label>
+                <div class="relative border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-500 transition cursor-pointer" id="dropZone">
+                    <input 
+                        type="file" 
+                        id="cv" 
+                        name="cv" 
+                        accept=".pdf,.doc,.docx"
+                        required
+                        class="hidden"
+                    />
+                    <div class="flex flex-col items-center space-y-2">
+                        <svg class="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                        </svg>
+                        <p class="text-gray-600 font-medium">Haz clic para subir o arrastra tu archivo</p>
+                        <p class="text-sm text-gray-500">PDF, DOC o DOCX (máx. 5MB)</p>
+                    </div>
+                    <span id="fileName" class="text-sm text-green-600 font-semibold mt-2 block hidden"></span>
+                </div>
+            </div>
+
+            <!-- Botones -->
+            <div class="flex gap-4 pt-6">
+                <button 
+                    type="button"
+                    id="btnEnviar"
+                    class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                    Enviar Candidatura
+                </button>
+                <button 
+                    type="reset"
+                    class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-3 px-6 rounded-lg transition"
+                >
+                    Limpiar
+                </button>
+            </div>
+        </form>
+
+        <!-- Footer -->
+        <div class="text-center mt-8 text-gray-600 text-sm">
+            <p>Gracias por tu interés en trabajar con nosotros</p>
+        </div>
+    </div>
+
+    <script>
+        // Obtener elementos
+        const formulario = document.getElementById('formularioCandidatura');
+        const btnEnviar = document.getElementById('btnEnviar');
+        const divMensaje = document.getElementById('mensaje');
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('cv');
+        const fileName = document.getElementById('fileName');
+
+        // Funcionalidad de drag and drop para el CV
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('border-blue-500', 'bg-blue-50');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('border-blue-500', 'bg-blue-50');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('border-blue-500', 'bg-blue-50');
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                fileInput.files = files;
+                updateFileName(files[0].name);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                updateFileName(e.target.files[0].name);
+            }
+        });
+
+        function updateFileName(name) {
+            fileName.textContent = '✓ Archivo seleccionado: ' + name;
+            fileName.classList.remove('hidden');
+        }
+
+        // Mostrar/ocultar mensajes
+        function mostrarMensaje(texto, esExito = false) {
+            divMensaje.innerHTML = '';
+            divMensaje.classList.remove('hidden', 'bg-red-100', 'border-red-400', 'text-red-700', 'bg-green-100', 'border-green-400', 'text-green-700');
+            
+            if (esExito) {
+                divMensaje.classList.add('bg-green-100', 'border-green-400', 'text-green-700');
+            } else {
+                divMensaje.classList.add('bg-red-100', 'border-red-400', 'text-red-700');
+            }
+            
+            divMensaje.className += ' border-l-4 p-4 rounded';
+            divMensaje.innerHTML = `<p class="font-bold">${esExito ? '✓ Éxito' : '✗ Error'}</p><p>${texto}</p>`;
+        }
+
+        // Validar campos
+        function validarFormulario() {
+            const nombres = document.getElementById('nombres').value.trim();
+            const apellidos = document.getElementById('apellidos').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const disposicion = document.getElementById('disposicion').value.trim();
+            const cv = document.getElementById('cv').files.length;
+
+            if (!nombres) {
+                mostrarMensaje('Por favor ingresa tus nombres completos');
+                return false;
+            }
+            if (!apellidos) {
+                mostrarMensaje('Por favor ingresa tus apellidos completos');
+                return false;
+            }
+            if (!email) {
+                mostrarMensaje('Por favor ingresa tu correo electrónico');
+                return false;
+            }
+            if (!disposicion) {
+                mostrarMensaje('Por favor selecciona tu disposición para trabajar');
+                return false;
+            }
+            if (cv === 0) {
+                mostrarMensaje('Por favor adjunta tu CV');
+                return false;
+            }
+
+            return true;
+        }
+
+        // Evento del botón Enviar
+        btnEnviar.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            // Validar formulario
+            if (!validarFormulario()) {
+                return;
+            }
+
+            // Deshabilitar botón y mostrar indicador de carga
+            btnEnviar.disabled = true;
+            btnEnviar.textContent = 'Enviando...';
+
+            // Crear FormData
+            const formData = new FormData(formulario);
+
+            // Enviar datos con AJAX
+            fetch('procesar.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.éxito) {
+                    mostrarMensaje(data.mensaje, true);
+                    formulario.reset();
+                    fileName.classList.add('hidden');
+                    
+                    // Limpiar después de 3 segundos
+                    setTimeout(() => {
+                        divMensaje.classList.add('hidden');
+                    }, 3000);
+                } else {
+                    mostrarMensaje(data.mensaje, false);
+                }
+            })
+            .catch(error => {
+                mostrarMensaje('Error en la comunicación con el servidor: ' + error, false);
+                console.error('Error:', error);
+            })
+            .finally(() => {
+                // Rehabilitar botón
+                btnEnviar.disabled = false;
+                btnEnviar.textContent = 'Enviar Candidatura';
+            });
+        });
+
+        // Limpiar mensaje al cambiar campos
+        const campos = document.querySelectorAll('input, select');
+        campos.forEach(campo => {
+            campo.addEventListener('change', () => {
+                if (!divMensaje.classList.contains('hidden')) {
+                    divMensaje.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
