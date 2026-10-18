@@ -238,7 +238,7 @@ completados = 55
 total=134
 Entonces es: (134*100)/134
 */
-$completados = 55;
+$completados = 56;
 $total = 134;
 
 $porcentaje = ($completados*100)/$total;
