@@ -223,13 +223,27 @@
 // }
 //Crea un for con la tabla de multiplicar de 7
 
-echo '<h3>Tabla del 7</h3>';
+// echo '<h3>Tabla del 7</h3>';
 
-for($i = 0 ;$i <=12; $i++ ){
+// for($i = 0 ;$i <=12; $i++ ){
 
-     echo '7 x ' .$i. ' = ' .(7*$i).' <br> ';
+//      echo '7 x ' .$i. ' = ' .(7*$i).' <br> ';
 
-}
+// }
+//Ver el porcentaje de avances de PHP clases
+/*
+El algoritmo sería
+Porcentaje = (Completados * 100)/Total
+completados = 55
+total=134
+Entonces es: (134*100)/134
+*/
+$completados = 55;
+$total = 134;
+
+$porcentaje = ($completados*100)/$total;
+$resultado = $porcentaje;
+echo 'El Resultado de tus avances es: ' . round($resultado , 2) . '%';
 
 
 

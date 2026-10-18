@@ -38,13 +38,16 @@ class Estudiante extends Persona{
 //Ahora hacemos la clase de un trabajador tmb son personas y vamos hacer un extends de la clase personas
 class Trabajador extends Persona{
 
-        parent::__construct($nombre,$edad,$pais,$carrera);
-        $this->cargo = $cargo;
+        function __construct($nombre, $edad, $pais,$trabajo)
+        {
+            parent::__construct($nombre, $edad, $pais);
+            $this->trabajo = $trabajo;
+        }
 
 }
 
-$carlos = new Trabajador('Carlos Arturo', 23, 'México', 'Desarrollador','Jefe de sistemas');
-echo $carlos->cargo;
+$carlos = new Trabajador('Carlos Arturo', 23, 'México', 'Jefe de sistemas');
+echo $carlos->trabajo;
 
 
 
