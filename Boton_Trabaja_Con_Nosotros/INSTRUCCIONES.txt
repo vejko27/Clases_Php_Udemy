@@ -6,7 +6,7 @@ PASO 1: CREAR LA BASE DE DATOS
 1. Abre tu navegador y ve a: http://localhost/phpmyadmin
 2. Inicia sesión (usuario: root, sin contraseña)
 3. En el panel izquierdo, busca la opción "Nueva" o "Create"
-4. Crea una nueva base de datos llamada: trabaja_con_nosotros
+4. Crea una nueva base de datos llamada: trabaja_con_SBC
 5. Después de crear la BD, selecciónala
 6. Ve a la pestaña "SQL" en la parte superior
 7. Copia todo el contenido del archivo "base_datos.sql"
@@ -20,12 +20,16 @@ ALTERNATIVA - Usando línea de comandos:
 
 PASO 2: VERIFICAR LOS ARCHIVOS
 ================================
-Los siguientes archivos deben estar en: C:\xampp\htdocs\Boton_Trabaja_Con_Nosotros\
+Los siguientes archivos deben estar en: C:\xampp\htdocs\Clases_Php_Udemy\Boton_Trabaja_Con_Nosotros\
 
 ✓ index.html - El formulario
-✓ procesar.php - Script que procesa y guarda los datos
+✓ syles_tnosotros.css - Estilos del formulario y del panel de candidatos
 ✓ base_datos.sql - Estructura de la base de datos
+✓ composer/composer.json y composer/composer.lock - Dependencia de PHPMailer
+✓ vendor/ - Se genera al instalar las dependencias con Composer
 ✓ cvs/ - Carpeta donde se guardarán los CVs (se crea automáticamente)
+✓ php/procesar.php - Script que procesa y guarda los datos
+✓ php/candidatos.php - Panel para administrar las candidaturas
 
 PASO 3: INICIAR XAMPP
 ======================
@@ -33,9 +37,26 @@ PASO 3: INICIAR XAMPP
 2. Inicia el servicio MySQL
 3. Inicia el servicio Apache
 
+INSTALAR PHPMailer Y CONFIGURAR EL CORREO
+==========================================
+1. Instala Composer para Windows si todavía no está instalado.
+2. Abre PowerShell en C:\xampp\htdocs\Clases_Php_Udemy\Boton_Trabaja_Con_Nosotros y ejecuta:
+   composer install --working-dir=composer
+3. Configura la variable de entorno MAIL_PASSWORD con la contraseña SMTP de
+   impresora1@gruposbc.com.pe. No escribas la contraseña en procesar.php ni la
+   guardes en el repositorio. En PowerShell, reemplaza el texto entre comillas
+   por la contraseña y ejecuta:
+   [Environment]::SetEnvironmentVariable('MAIL_PASSWORD', 'TU_CONTRASEÑA_SMTP', 'User')
+4. Cierra y vuelve a iniciar XAMPP para que Apache lea la variable de entorno.
+
+El envío usa smtp.office365.com por el puerto 587 con STARTTLS. Si el envío
+falla, verifica que SMTP AUTH esté habilitado para la cuenta en Microsoft 365.
+Las notificaciones se envían desde impresora1@gruposbc.com.pe a
+victor.canova@gruposbc.com.pe e incluyen el CV adjunto.
+
 PASO 4: PROBAR EL FORMULARIO
 =============================
-1. Abre tu navegador y ve a: http://localhost/Boton_Trabaja_Con_Nosotros/
+1. Abre tu navegador y ve a: http://localhost/Clases_Php_Udemy/Boton_Trabaja_Con_Nosotros/
 2. Completa el formulario con tus datos
 3. Adjunta un archivo PDF, DOC o DOCX
 4. Haz clic en "Enviar Candidatura"
@@ -44,27 +65,31 @@ PASO 4: PROBAR EL FORMULARIO
 PASO 5: VERIFICAR LOS DATOS EN LA BD
 ======================================
 1. Ve a http://localhost/phpmyadmin
-2. Selecciona la BD "trabaja_con_nosotros"
+2. Selecciona la BD "trabaja_con_SBC"
 3. Selecciona la tabla "candidatos"
 4. Verás todos los datos enviados a través del formulario
 
 PASO 6: DESCARGAR CVS
 =======================
-Los archivos CV se guardan en la carpeta: C:\xampp\htdocs\Boton_Trabaja_Con_Nosotros\cvs\
+Los archivos CV se guardan en la carpeta: C:\xampp\htdocs\Clases_Php_Udemy\Boton_Trabaja_Con_Nosotros\cvs\
 Puedes descargarlos directamente desde esta carpeta
+
+PASO 7: ABRIR EL PANEL DE CANDIDATOS
+====================================
+Ve a: http://localhost/Clases_Php_Udemy/Boton_Trabaja_Con_Nosotros/php/candidatos.php
 
 CONSIDERACIONES IMPORTANTES
 ============================
 1. Usuario MySQL: root
 2. Contraseña MySQL: (sin contraseña, deja en blanco)
 3. Host: localhost
-4. Base de datos: trabaja_con_nosotros
+4. Base de datos: trabaja_con_SBC
 
-Si necesitas cambiar estos datos, edita el archivo "procesar.php" en estas líneas:
+Si necesitas cambiar estos datos, edita el archivo "php/procesar.php" en estas líneas:
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "trabaja_con_nosotros";
+    $dbname = "trabaja_con_SBC";
 
 SOLUCIÓN DE PROBLEMAS
 ======================
@@ -72,18 +97,19 @@ SOLUCIÓN DE PROBLEMAS
 Problema: "Error de conexión a la base de datos"
 Solución: 
 - Verifica que MySQL esté corriendo en XAMPP
-- Asegúrate de que la BD "trabaja_con_nosotros" existe
-- Verifica los datos de conexión en procesar.php
+- Asegúrate de que la BD "trabaja_con_SBC" existe
+- Verifica los datos de conexión en php/procesar.php
 
 Problema: "Error al subir el archivo"
 Solución:
 - Verifica que la carpeta "cvs" tenga permisos de escritura
+- La carpeta "cvs" está en la raíz del proyecto, al mismo nivel que index.html
 - Comprueba que el archivo sea PDF, DOC o DOCX
 - Asegúrate de que el archivo no supere 5MB
 
-Problema: "Error 404 procesar.php no encontrado"
+Problema: "Error 404 php/procesar.php no encontrado"
 Solución:
-- Verifica que el archivo procesar.php esté en la carpeta correcta
+- Verifica que php/procesar.php esté dentro de la carpeta php
 - Recarga la página con Ctrl+F5 para limpiar caché
 
 CAMPOS DE LA BASE DE DATOS
@@ -92,7 +118,7 @@ CAMPOS DE LA BASE DE DATOS
 - nombres: Nombres completos del candidato
 - apellidos: Apellidos completos del candidato
 - email: Correo electrónico (no se pueden repetir)
-- disposicion: Tipo de disposición para trabajar
+- disposicion: Puesto al que postula el candidato
 - cv_nombre: Nombre original del archivo CV
 - cv_ruta: Ruta donde se guardó el archivo
 - fecha_registro: Fecha y hora del registro

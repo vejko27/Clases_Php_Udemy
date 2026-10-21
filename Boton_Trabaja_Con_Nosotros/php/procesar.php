@@ -1,9 +1,25 @@
 <?php
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+
+header('Content-Type: application/json; charset=utf-8');
+
+$autoload = dirname(__DIR__) . '/vendor/autoload.php';
+if (!is_file($autoload)) {
+    http_response_code(500);
+    echo json_encode(array(
+        'éxito' => false,
+        'mensaje' => 'PHPMailer no está instalado. Ejecuta composer install --working-dir=composer desde la raíz del proyecto.'
+    ));
+    exit;
+}
+require_once $autoload;
+
 // Configuración de la base de datos
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "trabaja_con_nosotros";
+$dbname = "trabaja_con_SBC";
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -70,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         
         // Crear directorio si no existe
-        $directorio_cv = 'cvs';
+        $directorio_cv = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'cvs';
         if (!is_dir($directorio_cv)) {
             mkdir($directorio_cv, 0755, true);
         }
@@ -78,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Generar nombre único para el archivo
         $extension = pathinfo($archivo_nombre, PATHINFO_EXTENSION);
         $nombre_unico = uniqid('cv_') . '_' . time() . '.' . $extension;
-        $ruta_destino = $directorio_cv . '/' . $nombre_unico;
+        $ruta_destino = $directorio_cv . DIRECTORY_SEPARATOR . $nombre_unico;
         
         // Mover archivo
         if (!move_uploaded_file($archivo_tmp, $ruta_destino)) {
@@ -88,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         
         $cv_nombre = $archivo_nombre;
-        $cv_ruta = $ruta_destino;
+        $cv_ruta = 'cvs/' . $nombre_unico;
     } else {
         $respuesta['mensaje'] = 'Por favor sube tu CV';
         echo json_encode($respuesta);
@@ -115,6 +131,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($stmt->execute()) {
         $respuesta['éxito'] = true;
         $respuesta['mensaje'] = '¡Candidatura enviada exitosamente! Nos pondremos en contacto pronto.';
+
+        $smtpPassword = getenv('MAIL_PASSWORD');
+        if ($smtpPassword === false || $smtpPassword === '') {
+            error_log('No se envió la notificación: la variable MAIL_PASSWORD no está configurada.');
+            $respuesta['mensaje'] .= ' No se pudo enviar la notificación por correo: falta configurar MAIL_PASSWORD.';
+        } else {
+            $nombreCompleto = trim($nombres . ' ' . $apellidos);
+            $html = '<h2>Nueva candidatura recibida</h2>'
+                . '<p><strong>Nombres:</strong> ' . htmlspecialchars($nombres, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</p>'
+                . '<p><strong>Apellidos:</strong> ' . htmlspecialchars($apellidos, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</p>'
+                . '<p><strong>Correo:</strong> ' . htmlspecialchars($email, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</p>'
+                . '<p><strong>Puesto al que postula:</strong> ' . htmlspecialchars($disposicion, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</p>';
+
+            try {
+                $mail = new PHPMailer(true);
+                $mail->isSMTP();
+                $mail->Host = 'smtp.office365.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'impresora1@gruposbc.com.pe';
+                $mail->Password = $smtpPassword;
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                $mail->Port = 587;
+                $mail->CharSet = 'UTF-8';
+                $mail->setFrom('impresora1@gruposbc.com.pe', 'Trabaja con Nosotros');
+                $mail->addAddress('victor.canova@gruposbc.com.pe');
+                $mail->addReplyTo($email, $nombreCompleto);
+                $mail->isHTML(true);
+                $mail->Subject = 'Nueva candidatura recibida';
+                $mail->Body = $html;
+                $mail->AltBody = "Nueva candidatura recibida\n"
+                    . "Nombres: {$nombres}\n"
+                    . "Apellidos: {$apellidos}\n"
+                    . "Correo: {$email}\n"
+                    . "Puesto al que postula: {$disposicion}";
+                $mail->addAttachment($ruta_destino, $cv_nombre);
+                $mail->send();
+            } catch (Exception $e) {
+                error_log('Error al enviar la notificación de candidatura: ' . $e->getMessage());
+                $respuesta['mensaje'] .= ' La candidatura se guardó, pero no se pudo enviar la notificación por correo. Revisa el registro de errores del servidor.';
+            }
+        }
     } else {
         $respuesta['mensaje'] = 'Error al guardar los datos: ' . $stmt->error;
     }
@@ -125,6 +182,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $conn->close();
 
 // Retornar respuesta en JSON
-header('Content-Type: application/json');
 echo json_encode($respuesta);
 ?>

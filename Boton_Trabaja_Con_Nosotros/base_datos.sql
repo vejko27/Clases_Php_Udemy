@@ -1,6 +1,6 @@
 -- Crear la base de datos
-CREATE DATABASE IF NOT EXISTS trabaja_con_nosotros;
-USE trabaja_con_nosotros;
+CREATE DATABASE IF NOT EXISTS trabaja_con_SBC;
+USE trabaja_con_SBC;
 
 -- Crear tabla de candidatos
 CREATE TABLE IF NOT EXISTS candidatos (

@@ -4,25 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trabaja con Nosotros</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="syles_tnosotros.css">
 </head>
-<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen py-12 px-4">
-    <div class="max-w-2xl mx-auto">
+<body class="application-page">
+    <main class="form-container">
         <!-- Header -->
-        <div class="text-center mb-8">
-            <h1 class="text-4xl font-bold text-gray-800 mb-2">¡Únete a Nuestro Equipo!</h1>
-            <p class="text-gray-600 text-lg">Completa el formulario para enviarnos tu candidatura</p>
-        </div>
+        <header class="page-header">
+            <h1>¡Únete a Nuestro Equipo!</h1>
+            <div class="header-accent"></div>
+            <p>Completa el formulario para enviarnos tu candidatura</p>
+        </header>
 
         <!-- Mensaje de respuesta -->
-        <div id="mensaje" class="mb-6 hidden"></div>
+        <div id="mensaje" class="form-message is-hidden"></div>
 
         <!-- Formulario -->
-        <form id="formularioCandidatura" class="bg-white rounded-lg shadow-lg p-8 space-y-6" enctype="multipart/form-data">
+        <form id="formularioCandidatura" class="application-form" enctype="multipart/form-data">
             
             <!-- Nombres Completos -->
-            <div>
-                <label for="nombres" class="block text-sm font-semibold text-gray-700 mb-2">
+            <div class="form-field">
+                <label for="nombres">
                     Nombres Completos
                 </label>
                 <input 
@@ -31,13 +32,13 @@
                     name="nombres" 
                     placeholder="Ej: Juan Carlos"
                     required
-                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                    class="form-control"
                 />
             </div>
 
             <!-- Apellidos Completos -->
-            <div>
-                <label for="apellidos" class="block text-sm font-semibold text-gray-700 mb-2">
+            <div class="form-field">
+                <label for="apellidos">
                     Apellidos Completos
                 </label>
                 <input 
@@ -46,13 +47,13 @@
                     name="apellidos" 
                     placeholder="Ej: Pérez García"
                     required
-                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                    class="form-control"
                 />
             </div>
 
             <!-- Correo Electrónico -->
-            <div>
-                <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
+            <div class="form-field">
+                <label for="email">
                     Correo Electrónico
                 </label>
                 <input 
@@ -61,69 +62,69 @@
                     name="email" 
                     placeholder="correo@ejemplo.com"
                     required
-                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                    class="form-control"
                 />
             </div>
 
-            <!-- Disposición para Trabajar -->
-            <div>
-                <label for="disposicion" class="block text-sm font-semibold text-gray-700 mb-2">
-                    Disposición para Trabajar
+            <!-- Puesto al que postula -->
+            <div class="form-field">
+                <label for="disposicion">
+                    Puesto al que postulas
                 </label>
                 <select 
                     id="disposicion" 
                     name="disposicion" 
                     required
-                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition bg-white"
+                    class="form-control"
                 >
                     <option value="">-- Selecciona una opción --</option>
-                    <option value="tiempo-completo">Tiempo Completo</option>
-                    <option value="medio-tiempo">Medio Tiempo</option>
-                    <option value="freelance">Freelance</option>
-                    <option value="practicante">Practicante</option>
-                    <option value="remoto">Remoto</option>
-                    <option value="presencial">Presencial</option>
-                    <option value="hibrido">Híbrido</option>
+                    <option value="Coordinador de flota">Coordinador de flota</option>
+                    <option value="Coordinador de transporte">Coordinador de transporte</option>
+                    <option value="Monitor GPS">Monitor GPS</option>
+                    <option value="Asistente administrativo">Asistente administrativo</option>
+                    <option value="Jefe de transporte">Jefe de transporte</option>
+                    <option value="Contador">Contador</option>
+                    <option value="Recursos Humanos">Recursos Humanos</option>
                 </select>
             </div>
 
             <!-- Adjuntar CV -->
-            <div>
-                <label for="cv" class="block text-sm font-semibold text-gray-700 mb-2">
+            <div class="form-field">
+                <label for="cv">
                     Adjuntar CV
                 </label>
-                <div class="relative border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-500 transition cursor-pointer" id="dropZone">
+                <div class="drop-zone" id="dropZone">
                     <input 
                         type="file" 
                         id="cv" 
                         name="cv" 
                         accept=".pdf,.doc,.docx"
                         required
-                        class="hidden"
+                        class="visually-hidden"
                     />
-                    <div class="flex flex-col items-center space-y-2">
-                        <svg class="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="drop-zone-content">
+                        <svg class="upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                         </svg>
-                        <p class="text-gray-600 font-medium">Haz clic para subir o arrastra tu archivo</p>
-                        <p class="text-sm text-gray-500">PDF, DOC o DOCX (máx. 5MB)</p>
+                        <p class="drop-zone-title">Haz clic para subir o arrastra tu archivo</p>
+                        <p class="drop-zone-hint">PDF, DOC o DOCX (máx. 5MB)</p>
                     </div>
-                    <span id="fileName" class="text-sm text-green-600 font-semibold mt-2 block hidden"></span>
+                    <span id="fileName" class="file-name is-hidden"></span>
                 </div>
             </div>
 
             <!-- Botones -->
-            <div class="flex gap-4 pt-6">
+            <div class="form-actions">
                 <button 
                     type="button"
                     id="btnEnviar"
-                    class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                    class="button button-primary"
                 >
                     Enviar Candidatura
                 </button>
                 <button 
                     type="reset"
-                    class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-3 px-6 rounded-lg transition"
+                    class="button button-secondary"
                 >
                     Limpiar
                 </button>
@@ -131,10 +132,10 @@
         </form>
 
         <!-- Footer -->
-        <div class="text-center mt-8 text-gray-600 text-sm">
+        <footer class="page-footer">
             <p>Gracias por tu interés en trabajar con nosotros</p>
-        </div>
-    </div>
+        </footer>
+    </main>
 
     <script>
         // Obtener elementos
@@ -150,16 +151,16 @@
 
         dropZone.addEventListener('dragover', (e) => {
             e.preventDefault();
-            dropZone.classList.add('border-blue-500', 'bg-blue-50');
+            dropZone.classList.add('is-dragging');
         });
 
         dropZone.addEventListener('dragleave', () => {
-            dropZone.classList.remove('border-blue-500', 'bg-blue-50');
+            dropZone.classList.remove('is-dragging');
         });
 
         dropZone.addEventListener('drop', (e) => {
             e.preventDefault();
-            dropZone.classList.remove('border-blue-500', 'bg-blue-50');
+            dropZone.classList.remove('is-dragging');
             
             const files = e.dataTransfer.files;
             if (files.length > 0) {
@@ -176,22 +177,14 @@
 
         function updateFileName(name) {
             fileName.textContent = '✓ Archivo seleccionado: ' + name;
-            fileName.classList.remove('hidden');
+            fileName.classList.remove('is-hidden');
         }
 
         // Mostrar/ocultar mensajes
         function mostrarMensaje(texto, esExito = false) {
-            divMensaje.innerHTML = '';
-            divMensaje.classList.remove('hidden', 'bg-red-100', 'border-red-400', 'text-red-700', 'bg-green-100', 'border-green-400', 'text-green-700');
-            
-            if (esExito) {
-                divMensaje.classList.add('bg-green-100', 'border-green-400', 'text-green-700');
-            } else {
-                divMensaje.classList.add('bg-red-100', 'border-red-400', 'text-red-700');
-            }
-            
-            divMensaje.className += ' border-l-4 p-4 rounded';
-            divMensaje.innerHTML = `<p class="font-bold">${esExito ? '✓ Éxito' : '✗ Error'}</p><p>${texto}</p>`;
+            divMensaje.classList.remove('is-hidden', 'message-success', 'message-error');
+            divMensaje.classList.add(esExito ? 'message-success' : 'message-error');
+            divMensaje.innerHTML = `<p class="message-title">${esExito ? '✓ Éxito' : '✗ Error'}</p><p>${texto}</p>`;
         }
 
         // Validar campos
@@ -215,7 +208,7 @@
                 return false;
             }
             if (!disposicion) {
-                mostrarMensaje('Por favor selecciona tu disposición para trabajar');
+                mostrarMensaje('Por favor selecciona el puesto al que postulas');
                 return false;
             }
             if (cv === 0) {
@@ -243,7 +236,7 @@
             const formData = new FormData(formulario);
 
             // Enviar datos con AJAX
-            fetch('procesar.php', {
+            fetch('php/procesar.php', {
                 method: 'POST',
                 body: formData
             })
@@ -252,11 +245,11 @@
                 if (data.éxito) {
                     mostrarMensaje(data.mensaje, true);
                     formulario.reset();
-                    fileName.classList.add('hidden');
+                    fileName.classList.add('is-hidden');
                     
                     // Limpiar después de 3 segundos
                     setTimeout(() => {
-                        divMensaje.classList.add('hidden');
+                        divMensaje.classList.add('is-hidden');
                     }, 3000);
                 } else {
                     mostrarMensaje(data.mensaje, false);
@@ -277,8 +270,8 @@
         const campos = document.querySelectorAll('input, select');
         campos.forEach(campo => {
             campo.addEventListener('change', () => {
-                if (!divMensaje.classList.contains('hidden')) {
-                    divMensaje.classList.add('hidden');
+                if (!divMensaje.classList.contains('is-hidden')) {
+                    divMensaje.classList.add('is-hidden');
                 }
             });
         });
