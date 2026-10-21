@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trabaja con Nosotros</title>
+    <link rel="icon" type="image/x-icon" href="logo/SBC_TRANSPORT.ico">
     <link rel="stylesheet" href="syles_tnosotros.css">
 </head>
 <body class="application-page">
@@ -181,10 +182,12 @@
         }
 
         // Mostrar/ocultar mensajes
-        function mostrarMensaje(texto, esExito = false) {
-            divMensaje.classList.remove('is-hidden', 'message-success', 'message-error');
-            divMensaje.classList.add(esExito ? 'message-success' : 'message-error');
-            divMensaje.innerHTML = `<p class="message-title">${esExito ? '✓ Éxito' : '✗ Error'}</p><p>${texto}</p>`;
+        function mostrarMensaje(texto, esExito = false, esAdvertencia = false) {
+            divMensaje.classList.remove('is-hidden', 'message-success', 'message-error', 'message-warning');
+            const claseMensaje = esAdvertencia ? 'message-warning' : (esExito ? 'message-success' : 'message-error');
+            const tituloMensaje = esAdvertencia ? '⚠ Candidatura guardada' : (esExito ? '✓ Éxito' : '✗ Error');
+            divMensaje.classList.add(claseMensaje);
+            divMensaje.innerHTML = `<p class="message-title">${tituloMensaje}</p><p>${texto}</p>`;
         }
 
         // Validar campos
@@ -243,7 +246,7 @@
             .then(response => response.json())
             .then(data => {
                 if (data.éxito) {
-                    mostrarMensaje(data.mensaje, true);
+                    mostrarMensaje(data.mensaje, true, data.correo_enviado === false);
                     formulario.reset();
                     fileName.classList.add('is-hidden');
                     

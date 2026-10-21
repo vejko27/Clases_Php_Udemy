@@ -23,13 +23,15 @@ PASO 2: VERIFICAR LOS ARCHIVOS
 Los siguientes archivos deben estar en: C:\xampp\htdocs\Clases_Php_Udemy\Boton_Trabaja_Con_Nosotros\
 
 ✓ index.html - El formulario
-✓ syles_tnosotros.css - Estilos del formulario y del panel de candidatos
+✓ syles_tnosotros.css - Estilos del formulario de postulaciones
 ✓ base_datos.sql - Estructura de la base de datos
 ✓ composer/composer.json y composer/composer.lock - Dependencia de PHPMailer
 ✓ vendor/ - Se genera al instalar las dependencias con Composer
+✓ PHPMailer-master/ - Biblioteca PHPMailer descargada para el envío SMTP
 ✓ cvs/ - Carpeta donde se guardarán los CVs (se crea automáticamente)
 ✓ php/procesar.php - Script que procesa y guarda los datos
-✓ php/candidatos.php - Panel para administrar las candidaturas
+✓ config/correo.php - Configuración SMTP local (no se sube al repositorio)
+✓ config/.htaccess - Bloquea el acceso web a los archivos de configuración
 
 PASO 3: INICIAR XAMPP
 ======================
@@ -37,22 +39,29 @@ PASO 3: INICIAR XAMPP
 2. Inicia el servicio MySQL
 3. Inicia el servicio Apache
 
-INSTALAR PHPMailer Y CONFIGURAR EL CORREO
-==========================================
-1. Instala Composer para Windows si todavía no está instalado.
-2. Abre PowerShell en C:\xampp\htdocs\Clases_Php_Udemy\Boton_Trabaja_Con_Nosotros y ejecuta:
-   composer install --working-dir=composer
-3. Configura la variable de entorno MAIL_PASSWORD con la contraseña SMTP de
-   impresora1@gruposbc.com.pe. No escribas la contraseña en procesar.php ni la
-   guardes en el repositorio. En PowerShell, reemplaza el texto entre comillas
-   por la contraseña y ejecuta:
-   [Environment]::SetEnvironmentVariable('MAIL_PASSWORD', 'TU_CONTRASEÑA_SMTP', 'User')
-4. Cierra y vuelve a iniciar XAMPP para que Apache lea la variable de entorno.
+CONFIGURAR PHPMailer Y EL CORREO
+================================
+1. Mantén la carpeta PHPMailer-master, incluida su subcarpeta src, en la raíz
+   del proyecto. php/procesar.php carga directamente Exception.php, SMTP.php
+   y PHPMailer.php desde esa carpeta; no hace falta ejecutar Composer para
+   enviar correos.
+2. Abre config/correo.php y escribe la contraseña SMTP en la opción "password".
+   Para una instalación nueva, copia config/correo.example.php como
+   config/correo.php y completa allí la contraseña. No la escribas en
+   php/procesar.php ni la subas al repositorio.
+3. config/correo.php está excluido de Git y protegido contra acceso web por
+   config/.htaccess. En el hosting, sube el archivo config/correo.php por el
+   administrador de archivos o SFTP y completa allí las credenciales de ese
+   servidor; nunca publiques ese archivo en Git.
 
 El envío usa smtp.office365.com por el puerto 587 con STARTTLS. Si el envío
 falla, verifica que SMTP AUTH esté habilitado para la cuenta en Microsoft 365.
 Las notificaciones se envían desde impresora1@gruposbc.com.pe a
 victor.canova@gruposbc.com.pe e incluyen el CV adjunto.
+
+En hosting Apache, conserva la protección config/.htaccess. Si el hosting usa
+Nginx o no respeta archivos .htaccess, guarda config/correo.php fuera de la raíz
+web y ajusta su ruta de carga antes de publicar el sitio.
 
 PASO 4: PROBAR EL FORMULARIO
 =============================
@@ -62,21 +71,15 @@ PASO 4: PROBAR EL FORMULARIO
 4. Haz clic en "Enviar Candidatura"
 5. Deberías ver un mensaje de éxito
 
-PASO 5: VERIFICAR LOS DATOS EN LA BD
-======================================
-1. Ve a http://localhost/phpmyadmin
-2. Selecciona la BD "trabaja_con_SBC"
-3. Selecciona la tabla "candidatos"
-4. Verás todos los datos enviados a través del formulario
+PASO 5: RECIBIR Y REVISAR POSTULACIONES
+========================================
+Las postulaciones se revisan desde el correo victor.canova@gruposbc.com.pe.
+Cada notificación incluye los datos del postulante y su CV adjunto. La gestión
+de las postulaciones se realiza únicamente desde el correo electrónico.
 
-PASO 6: DESCARGAR CVS
-=======================
-Los archivos CV se guardan en la carpeta: C:\xampp\htdocs\Clases_Php_Udemy\Boton_Trabaja_Con_Nosotros\cvs\
-Puedes descargarlos directamente desde esta carpeta
-
-PASO 7: ABRIR EL PANEL DE CANDIDATOS
-====================================
-Ve a: http://localhost/Clases_Php_Udemy/Boton_Trabaja_Con_Nosotros/php/candidatos.php
+Los registros también se guardan en la tabla "candidatos" de la base de datos.
+Los CV se conservan en la carpeta:
+C:\xampp\htdocs\Clases_Php_Udemy\Boton_Trabaja_Con_Nosotros\cvs\
 
 CONSIDERACIONES IMPORTANTES
 ============================

@@ -252,6 +252,12 @@ body {
     color: #991b1b;
 }
 
+.message-warning {
+    border-color: #d97706;
+    background: #fffbeb;
+    color: #92400e;
+}
+
 .page-footer {
     margin-top: 32px;
     text-align: center;
@@ -260,172 +266,6 @@ body {
 
 .page-footer p {
     margin: 0;
-}
-
-.admin-page {
-    padding: 32px 16px;
-    background: #f1f5f6;
-}
-
-.admin-container {
-    width: min(100%, 1280px);
-    margin: 0 auto;
-}
-
-.admin-header {
-    text-align: left;
-}
-
-.admin-header .header-accent {
-    margin: 0 0 16px;
-}
-
-.admin-header p {
-    margin: 0;
-}
-
-.candidate-total {
-    color: var(--color-sbc);
-    font-weight: 700;
-}
-
-.candidate-card {
-    overflow: hidden;
-    border-radius: 10px;
-    background: var(--color-white);
-    box-shadow: var(--shadow-card);
-}
-
-.table-wrapper {
-    overflow-x: auto;
-}
-
-.candidate-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-}
-
-.candidate-table th,
-.candidate-table td {
-    padding: 14px 20px;
-    border-bottom: 1px solid #e2e8f0;
-    white-space: nowrap;
-}
-
-.candidate-table thead {
-    background: var(--color-sbc);
-    color: var(--color-white);
-}
-
-.candidate-table th {
-    font-size: 0.875rem;
-    font-weight: 700;
-}
-
-.candidate-table tbody tr {
-    transition: background-color 140ms ease;
-}
-
-.candidate-table tbody tr:nth-child(odd) {
-    background: #f8fafc;
-}
-
-.candidate-table tbody tr:hover {
-    background: var(--color-sbc-light);
-}
-
-.candidate-table td {
-    overflow-wrap: anywhere;
-}
-
-.candidate-id {
-    color: #1f2937;
-    font-weight: 700;
-}
-
-.candidate-email,
-.back-link a {
-    color: var(--color-sbc);
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.candidate-email:hover,
-.back-link a:hover {
-    color: var(--color-sbc-dark);
-    text-decoration: underline;
-}
-
-.position-badge,
-.candidate-status {
-    display: inline-block;
-    padding: 5px 12px;
-    border-radius: 999px;
-    font-size: 0.8125rem;
-    font-weight: 700;
-}
-
-.position-badge,
-.status-revisado {
-    background: var(--color-sbc-light);
-    color: var(--color-sbc-dark);
-}
-
-.status-nuevo {
-    background: #dcfce7;
-    color: #166534;
-}
-
-.status-rechazado {
-    background: #fee2e2;
-    color: #991b1b;
-}
-
-.status-seleccionado {
-    background: #fef3c7;
-    color: #92400e;
-}
-
-.status-desconocido {
-    background: #e2e8f0;
-    color: #334155;
-}
-
-.actions-heading,
-.candidate-actions {
-    text-align: center;
-}
-
-.download-button {
-    display: inline-block;
-    padding: 9px 14px;
-    border-radius: 6px;
-    background: var(--color-gold);
-    color: #1f2937;
-    font-size: 0.875rem;
-    font-weight: 700;
-    text-decoration: none;
-    transition: background-color 160ms ease;
-}
-
-.download-button:hover {
-    background: #eab308;
-}
-
-.empty-state {
-    padding: 32px;
-    text-align: center;
-    font-size: 1.125rem;
-}
-
-.empty-state p {
-    margin: 0;
-}
-
-.back-link {
-    margin-top: 32px;
-    text-align: center;
 }
 
 @media (max-width: 600px) {
@@ -442,98 +282,6 @@ body {
         flex-direction: column;
         padding-top: 12px;
     }
-
-    .admin-page {
-        padding: 24px 12px;
-    }
-
-    .candidate-table th,
-    .candidate-table td {
-        padding: 12px 14px;
-    }
-}
-
-@media (max-width: 640px) {
-    .candidate-card {
-        overflow: visible;
-        background: transparent;
-        box-shadow: none;
-    }
-
-    .table-wrapper {
-        overflow: visible;
-    }
-
-    .candidate-table,
-    .candidate-table tbody {
-        display: block;
-        width: 100%;
-    }
-
-    .candidate-table thead {
-        display: none;
-    }
-
-    .candidate-table tbody tr {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
-        margin-bottom: 16px;
-        padding: 16px;
-        border: 1px solid #e2e8f0;
-        border-radius: 10px;
-        background: var(--color-white);
-        box-shadow: 0 4px 14px rgba(15, 52, 61, 0.08);
-    }
-
-    .candidate-table tbody tr:nth-child(odd),
-    .candidate-table tbody tr:hover {
-        background: var(--color-white);
-    }
-
-    .candidate-table td {
-        display: flex;
-        min-width: 0;
-        flex-direction: column;
-        gap: 5px;
-        padding: 0;
-        border: 0;
-        white-space: normal;
-    }
-
-    .candidate-table td::before {
-        color: var(--color-muted);
-        content: attr(data-label);
-        font-size: 0.7rem;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-    }
-
-    .candidate-table .candidate-id {
-        color: var(--color-sbc-dark);
-    }
-
-    .candidate-table td:nth-child(4),
-    .candidate-table td:nth-child(5),
-    .candidate-table .candidate-actions {
-        grid-column: 1 / -1;
-    }
-
-    .candidate-actions {
-        align-items: flex-start;
-        text-align: left;
-    }
-
-    .candidate-email {
-        overflow-wrap: anywhere;
-    }
-
-    .empty-state {
-        border-radius: 10px;
-        background: var(--color-white);
-        box-shadow: var(--shadow-card);
-    }
 }
 
 @media (max-width: 380px) {
@@ -548,15 +296,5 @@ body {
 
     .drop-zone {
         padding: 20px 12px;
-    }
-
-    .admin-page {
-        padding-right: 10px;
-        padding-left: 10px;
-    }
-
-    .candidate-table tbody tr {
-        gap: 12px;
-        padding: 14px;
     }
 }
