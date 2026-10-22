@@ -1,7 +1,7 @@
 <?php
 //Configuramos los datos de nuestro servidor de conexion, sea local, como tmb hosting
 $host='localhost';
-$basededatos ='prueba_datos';
+$basededatos ='extranet_sbc';
 $usuario ='root';
 $contraseña = '';
 //Luego de ello establecemos la conexion entre base de datos y algoritmo de desarrollo.
